@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
+import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -15,22 +16,26 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-        required
-      />
-      <input
-        type="tel"
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}
-        placeholder="Number"
-        required
-      />
-      <button type="submit">Add Contact</button>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <label>
+        Ім'я:
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Телефон:
+        <input
+          type="tel"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          required
+        />
+      </label>
+      <button type="submit">Додати контакт</button>
     </form>
   );
 };
