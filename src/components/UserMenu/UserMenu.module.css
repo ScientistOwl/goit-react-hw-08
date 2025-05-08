@@ -1,0 +1,22 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username {
+  font-weight: bold;
+  color: #333;
+}
+
+.logoutButton {
+  padding: 8px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: darkred;
+}
