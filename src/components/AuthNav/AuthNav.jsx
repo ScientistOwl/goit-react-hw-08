@@ -1,22 +1,35 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { logout } from "../../redux/auth/operations";
 import styles from "./AuthNav.module.css";
+import { NavLink } from "react-router-dom";
 
-const AuthNav = () => (
-  <nav className={styles.authNav}>
-    <NavLink
-      to="/register"
-      className={({ isActive }) => (isActive ? styles.active : styles.link)}
-    >
-      Реєстрація
-    </NavLink>
-    <NavLink
-      to="/login"
-      className={({ isActive }) => (isActive ? styles.active : styles.link)}
-    >
-      Увійти
-    </NavLink>
-  </nav>
-);
+const AuthNav = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  return (
+    <nav className={styles.authNav}>
+      {isLoggedIn ? (
+        <button
+          className={styles.logoutButton}
+          onClick={() => dispatch(logout())}
+        >
+          Вийти
+        </button>
+      ) : (
+        <>
+          <NavLink to="/register" className={styles.link}>
+            Реєстрація
+          </NavLink>
+          <NavLink to="/login" className={styles.link}>
+            Увійти
+          </NavLink>
+        </>
+      )}
+    </nav>
+  );
+};
 
 export default AuthNav;

@@ -1,14 +1,23 @@
 .authNav {
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
 }
 
-.active {
-  color: yellow;
+.logoutButton {
+  padding: 8px 12px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logoutButton:hover {
+  background-color: darkred;
 }
